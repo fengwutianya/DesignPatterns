@@ -16,7 +16,16 @@ public class WeatherData implements Subject {
         this.observers = new ArrayList<>();
     }
 
+    public void setMeasurements(float temperature, float humidity, float pressure) {
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.pressure = pressure;
+        measurementsChanged();
+    }
 
+    private void measurementsChanged() {
+        notifyObservers();
+    }
 
     @Override
     public void registerObserver(Observer observer) {
